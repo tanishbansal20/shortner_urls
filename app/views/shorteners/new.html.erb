@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shortener</title>
+</head>
+<body>
+<center>
+	<h2>
+		Enter Url
+	</h2>
+	<form action="/shorteners", method="post">
+		<input type="text", value="" , name="original_url"/>
+		<input type="submit" value="Submit">
+	</form>
+	<%= link_to("Shortned List", shorteners_path)%>
+</center>
+</body>
+</html>

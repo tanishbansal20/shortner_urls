@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shortener</title>
+</head>
+<body>
+<center>
+	<h2>
+		Shortened List
+	</h2>
+	 <table>
+      <thead>
+          <tr>
+            <th>Original URL</th>
+            <th></th>
+            <th>Short URL</th> 
+            <th>Actions</th>                  
+          </tr>
+      </thead>
+      <%if @urls.present?%>
+      <% @urls.each do |url| %>
+          <tbody>
+            <tr>
+              <td><%= sanitize(truncate(url['original_url'], omision: "...", length: 300))%></td>
+              <td>   </td>
+              <td><%= link_to(request.host_with_port + '/' + url['short_url'], url['original_url']) %></td>
+              <td><a><%= link_to '<i class="fa fa-trash" aria-hidden="true"></i> Delete'.html_safe, shortener_path(url['short_url']),:method => :delete,  :data => {:confirm => 'Are you sure?'}, style: "width: 99px;", :class=>"btn btn-sm btn-danger"%></a></td>
+            </tr>                              
+          </tbody>
+      <%end%>
+      <%else%>
+      	"No url found." 
+      	<%end%>
+  </table>
+  <%= link_to("Back", new_shortener_path)%>
+</center>
+</body>
+</html>

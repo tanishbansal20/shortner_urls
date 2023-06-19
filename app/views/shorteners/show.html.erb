@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shortener</title>
+</head>
+<body>
+<center>
+	<h2>Original URL : <%= @original_url%></h2>
+	<h2>Short URL : <%= @short_url%></h2>
+	<%= link_to("Back", new_shortener_path)%>
+</center>
+</body>
+</html>
